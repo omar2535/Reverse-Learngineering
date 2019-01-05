@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "MemoryManipulator.h"
 
+using namespace std;
+
 // write to memory
 void WriteToMemory(uintptr_t addressToWrite, char* valueToWrite, int numberOfBytes) {
 	unsigned long oldProtection;
@@ -29,4 +31,12 @@ uintptr_t FindDMAddy(int pointerLevel, uintptr_t offsets[], uintptr_t baseAddres
 		}
 	}
 	return pointer;
+}
+
+// writes into a block of memory
+// addresses_to_write: an array of addresses in which the information is stored at
+// value to write: a array of byte sequences that should total up to the same number of bytes
+//				   stored within the original addresses
+void WriteBlockToMemory(vector<uintptr_t> addresses_to_write[], char* values_to_write) {
+	
 }
