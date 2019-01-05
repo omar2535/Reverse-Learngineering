@@ -1,9 +1,11 @@
 #include "stdafx.h"
 #include "MemoryManipulator.h"
+#include "utils.h"
 
 using namespace std;
 
 // write to memory
+// takes in an address to write, the byte sequence to write, and the size of the byte sequence
 void WriteToMemory(uintptr_t addressToWrite, char* valueToWrite, int numberOfBytes) {
 	unsigned long oldProtection;
 	// gives us permission to read & write to the address, and grab the old protection to that part in memory
@@ -37,6 +39,17 @@ uintptr_t FindDMAddy(int pointerLevel, uintptr_t offsets[], uintptr_t baseAddres
 // addresses_to_write: an array of addresses in which the information is stored at
 // value to write: a array of byte sequences that should total up to the same number of bytes
 //				   stored within the original addresses
-void WriteBlockToMemory(vector<uintptr_t> addresses_to_write[], char* values_to_write) {
+// eg. WriteBlockMemory({0x10000,0x10002}, [{0x90, 0x90}, {0x90, 0x90}], {2, 2})
+void WriteBlockToMemory(vector<uintptr_t> addresses_to_write, vector<char*> values_to_write, vector<int> numberOfBytes) {
+	for (int i = 0; i < addresses_to_write.size(); i++) {
+		WriteToMemory(addresses_to_write[i], values_to_write[i], numberOfBytes[i]);
+	}
+}
+
+// will write a block of nops to memory
+// length of addresses_to_write should be the same as length of defaultOpCodes
+void WriteBlockNopsToMemory(vector<uintptr_t> addresses_to_write, vector<string> defaultOpCodes) {
+	vector < vector<int >> size_layout = {{}};
 	
+
 }
