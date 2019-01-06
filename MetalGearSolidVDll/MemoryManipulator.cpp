@@ -49,7 +49,7 @@ void WriteBlockToMemory(vector<uintptr_t> addresses_to_write, vector<char*> valu
 // will write a block of nops to memory
 // length of addresses_to_write should be the same as length of defaultOpCodes
 void WriteBlockNopsToMemory(vector<uintptr_t> addresses_to_write, vector<string> defaultOpCodes) {
-	vector < vector<int >> size_layout = {{}};
+	vector <int> size_layout = {};
 	
 
 }
