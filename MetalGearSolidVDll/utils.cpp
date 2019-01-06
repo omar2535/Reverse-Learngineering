@@ -16,3 +16,12 @@ char *NoOpsBuilder(int numberOfBytes) {
 	}
 	return StringToCharArr(nopBuilder);
 }
+
+std::vector<BYTE> NoOpsBuilderByte(int numberOfBytes) {
+	std::vector<BYTE> byteBuilder = {};
+	BYTE nopByte = 0x90;
+	for (int i = 0; i < numberOfBytes; i++) {
+		byteBuilder.push_back(nopByte);
+	}
+	return byteBuilder;
+}

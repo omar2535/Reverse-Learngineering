@@ -50,6 +50,9 @@ void WriteBlockToMemory(vector<uintptr_t> addresses_to_write, vector<char*> valu
 // length of addresses_to_write should be the same as length of defaultOpCodes
 void WriteBlockNopsToMemory(vector<uintptr_t> addresses_to_write, vector<string> defaultOpCodes) {
 	vector <int> size_layout = {};
-	
+}
 
+void WriteProcessToMemory(HANDLE handle, uintptr_t address, vector<BYTE> byteSequence) {
+	BYTE* bytesToInject = &byteSequence[0];
+	WriteProcessMemory(handle, (BYTE*)address, bytesToInject, byteSequence.size(), 0);
 }
