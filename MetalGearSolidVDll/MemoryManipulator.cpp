@@ -40,15 +40,15 @@ uintptr_t FindDMAddy(int pointerLevel, uintptr_t offsets[], uintptr_t baseAddres
 // value to write: a array of byte sequences that should total up to the same number of bytes
 //				   stored within the original addresses
 // eg. WriteBlockMemory({0x10000,0x10002}, [{0x90, 0x90}, {0x90, 0x90}], {2, 2})
-void WriteBlockToMemory(vector<uintptr_t> addresses_to_write, vector<char*> values_to_write, vector<int> numberOfBytes) {
+void WriteBlockToMemory(HANDLE handle, vector<uintptr_t> addresses_to_write, vector<vector<BYTE> > opcodes_to_write) {
 	for (int i = 0; i < addresses_to_write.size(); i++) {
-		WriteToMemory(addresses_to_write[i], values_to_write[i], numberOfBytes[i]);
+		WriteProcessToMemory(handle, addresses_to_write[i], opcodes_to_write[i]);
 	}
 }
 
 // will write a block of nops to memory
 // length of addresses_to_write should be the same as length of defaultOpCodes
-void WriteBlockNopsToMemory(HANDLE handle, vector<uintptr_t> addresses_to_write, std::vector<std::vector<BYTE> > defaultOpCodes) {
+void WriteBlockNopsToMemory(HANDLE handle, vector<uintptr_t> addresses_to_write, vector<vector<BYTE> > defaultOpCodes) {
 	for (int i = 0; i < addresses_to_write.size(); i++) {
 		WriteProcessToMemory(handle, addresses_to_write[i], NoOpsBuilderByte(defaultOpCodes[i].size()));
 	}
