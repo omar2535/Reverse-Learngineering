@@ -48,8 +48,10 @@ void WriteBlockToMemory(vector<uintptr_t> addresses_to_write, vector<char*> valu
 
 // will write a block of nops to memory
 // length of addresses_to_write should be the same as length of defaultOpCodes
-void WriteBlockNopsToMemory(vector<uintptr_t> addresses_to_write, vector<string> defaultOpCodes) {
-	vector <int> size_layout = {};
+void WriteBlockNopsToMemory(HANDLE handle, vector<uintptr_t> addresses_to_write, std::vector<std::vector<BYTE> > defaultOpCodes) {
+	for (int i = 0; i < addresses_to_write.size(); i++) {
+		WriteProcessToMemory(handle, addresses_to_write[i], NoOpsBuilderByte(defaultOpCodes[i].size()));
+	}
 }
 
 void WriteProcessToMemory(HANDLE handle, uintptr_t address, vector<BYTE> byteSequence) {
