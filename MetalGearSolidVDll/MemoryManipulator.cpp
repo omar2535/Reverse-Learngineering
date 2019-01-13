@@ -48,6 +48,8 @@ void WriteBlockToMemory(HANDLE handle, vector<uintptr_t> addresses_to_write, vec
 
 // will write a block of nops to memory
 // length of addresses_to_write should be the same as length of defaultOpCodes
+// requires the default opcodes to determine number of nops to write
+// this is to keep consistent size accross instructions
 void WriteBlockNopsToMemory(HANDLE handle, vector<uintptr_t> addresses_to_write, vector<vector<BYTE> > defaultOpCodes) {
 	for (int i = 0; i < addresses_to_write.size(); i++) {
 		WriteProcessToMemory(handle, addresses_to_write[i], NoOpsBuilderByte(defaultOpCodes[i].size()));
