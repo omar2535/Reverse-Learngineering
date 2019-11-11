@@ -1,5 +1,5 @@
 # Reverse-Learngineering
-In this repository will be a variety of libraries that modify memory inside programs (mostly games). This repository will be for learning purposes only and any uses of this for illagal activities is prohibited. 
+In this repository will be a variety of libraries that modify memory inside programs (mostly games). This repository will be for learning purposes only and any uses of this for illegal activities is prohibited. 
 
 ## Software used
 * Visual Studio 2017
